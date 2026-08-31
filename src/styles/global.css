@@ -1938,6 +1938,12 @@ h3 {
   font-size: 0.76rem;
 }
 
+.footer-brand .footer-note a {
+  color: var(--paper);
+  font-weight: 800;
+  text-decoration-color: rgba(244, 239, 228, 0.42);
+}
+
 .site-footer h2 {
   margin-bottom: 22px;
   font-family: var(--sans);

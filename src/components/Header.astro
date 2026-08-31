@@ -1,6 +1,6 @@
 ---
 import BrandMark from "./BrandMark.astro";
-import { primaryNav } from "../data/business";
+import { business, primaryNav } from "../data/business";
 
 const currentPath = Astro.url.pathname;
 const isCurrent = (href: string) =>
@@ -19,7 +19,7 @@ const isCurrent = (href: string) =>
         </a>
       ))}
     </nav>
-    <a class="button button-small header-quote" href="/quote/">Request a quote</a>
+    <a class="button button-small header-quote" href={business.phoneHref}>Call {business.phone}</a>
     <button
       class="menu-button"
       type="button"
@@ -40,6 +40,9 @@ const isCurrent = (href: string) =>
           <span>{String(index + 1).padStart(2, "0")}</span>{item.label}
         </a>
       ))}
+      <a href={business.phoneHref}>
+        <span>{String(primaryNav.length + 1).padStart(2, "0")}</span>Call Doug {business.phone}
+      </a>
       <a class="button" href="/quote/">Request a quote</a>
     </div>
   </nav>

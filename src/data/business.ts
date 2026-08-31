@@ -9,7 +9,9 @@ export const business = {
   serviceAreaLabel: "Fort Worth, Texas",
   description:
     "Residential and commercial cleaning in Fort Worth, with clear service paths for homes, offices, and local workplaces.",
-  phone: null,
+  phone: "(929) 448 1567",
+  phoneE164: "+19294481567",
+  phoneHref: "tel:+19294481567",
   email: null,
   streetAddress: null,
   hours: null,

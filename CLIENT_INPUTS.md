@@ -7,7 +7,7 @@ The website intentionally omits unverified facts. Complete this file with Doug b
 * Final legal business name:
 * Approved public brand name:
 * Owner public name:
-* Public phone:
+* Public phone: (929) 448 1567
 * Public email:
 * Privacy email:
 * Final domain:

@@ -59,6 +59,13 @@ if (includeSchema) {
     name: business.name,
     url: site.href,
     description: business.description,
+    telephone: business.phoneE164,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: business.phoneE164,
+      contactType: "customer service",
+      areaServed: "Fort Worth, Texas"
+    },
     areaServed: {
       "@type": "City",
       name: business.city,
@@ -144,7 +151,7 @@ const jsonLd = JSON.stringify({
     </div>
     <Footer />
     <div class="mobile-action" aria-label="Quick action">
-      <a href="/quote/">Request a quote <span aria-hidden="true">→</span></a>
+      <a href={business.phoneHref}>Call Doug <span>{business.phone}</span></a>
     </div>
   </body>
 </html>

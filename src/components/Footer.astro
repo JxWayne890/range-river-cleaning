@@ -11,7 +11,7 @@ import { business, services } from "../data/business";
         <BrandMark />
       </a>
       <p>{business.description}</p>
-      <p class="footer-note">Phone, email, hours, and expanded coverage will be published after owner confirmation.</p>
+      <p class="footer-note"><a href={business.phoneHref}>Call Doug at {business.phone}</a><br />Email, hours, and expanded coverage will be published after owner confirmation.</p>
     </div>
     <div>
       <h2>Cleaning paths</h2>
@@ -25,6 +25,7 @@ import { business, services } from "../data/business";
         <li><a href="/about/">About</a></li>
         <li><a href="/service-area/fort-worth/">Fort Worth service area</a></li>
         <li><a href="/faq/">Frequently asked questions</a></li>
+        <li><a href={business.phoneHref}>Call {business.phone}</a></li>
         <li><a href="/quote/">Request a quote</a></li>
         <li><a href="/privacy/">Privacy</a></li>
       </ul>
