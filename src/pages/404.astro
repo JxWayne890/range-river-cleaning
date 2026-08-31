@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found | Range & River Cleaning Co."
+  description="The requested Range & River page could not be found."
+  path="/404/"
+  noindex={true}
+  canonicalEnabled={false}
+  includeSchema={false}
+>
+  <main class="section not-found-page">
+    <div class="shell not-found-grid">
+      <div class="not-found-code">404</div>
+      <div>
+        <span class="kicker">Wrong turn</span>
+        <h1>This path leaves the map.</h1>
+        <p class="lead">The page may have moved, or the address may be incomplete. Return home or start a cleaning request.</p>
+        <div class="hero-actions">
+          <a class="button" href="/">Return home</a>
+          <a class="button button-outline" href="/quote/">Request a quote</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

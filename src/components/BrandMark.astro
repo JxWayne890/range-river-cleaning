@@ -1,0 +1,18 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<span class:list={["brand-lockup", { compact }]}>
+  <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+    <path d="M9 9h25c11 0 19 6 19 16 0 8-5 13-13 15l14 15H40L28 41h-7v14H9V9Zm12 10v12h12c5 0 8-2 8-6s-3-6-8-6H21Z" />
+    <path class="river-line" d="M4 47c10-6 18-6 28 0s18 6 28 0" />
+  </svg>
+  <span class="brand-type">
+    <strong>Range <i>&amp;</i> River</strong>
+    <small>Cleaning Co.</small>
+  </span>
+</span>

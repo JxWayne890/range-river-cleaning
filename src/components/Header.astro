@@ -1,0 +1,81 @@
+---
+import BrandMark from "./BrandMark.astro";
+import { primaryNav } from "../data/business";
+
+const currentPath = Astro.url.pathname;
+const isCurrent = (href: string) =>
+  href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+---
+
+<header class="site-header" data-site-header>
+  <div class="header-inner">
+    <a class="brand-link" href="/" aria-label="Range and River Cleaning Company home">
+      <BrandMark />
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {primaryNav.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <a class="button button-small header-quote" href="/quote/">Request a quote</a>
+    <button
+      class="menu-button"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+      data-menu-button
+    >
+      <span class="sr-only">Open navigation</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation" hidden data-mobile-nav>
+    <div class="mobile-nav-inner">
+      {primaryNav.map((item, index) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+          <span>{String(index + 1).padStart(2, "0")}</span>{item.label}
+        </a>
+      ))}
+      <a class="button" href="/quote/">Request a quote</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>("[data-menu-button]");
+  const menu = document.querySelector<HTMLElement>("[data-mobile-nav]");
+
+  if (button && menu) {
+    const closeMenu = () => {
+      button.setAttribute("aria-expanded", "false");
+      button.querySelector(".sr-only")!.textContent = "Open navigation";
+      menu.hidden = true;
+      document.body.classList.remove("menu-open");
+    };
+
+    button.addEventListener("click", () => {
+      const willOpen = button.getAttribute("aria-expanded") !== "true";
+      button.setAttribute("aria-expanded", String(willOpen));
+      button.querySelector(".sr-only")!.textContent = willOpen
+        ? "Close navigation"
+        : "Open navigation";
+      menu.hidden = !willOpen;
+      document.body.classList.toggle("menu-open", willOpen);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 980) closeMenu();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+        button.focus();
+      }
+    });
+  }
+</script>

@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+
+const path = "/privacy/";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Privacy", path }
+];
+---
+
+<BaseLayout
+  title="Privacy | Range & River Cleaning Co."
+  description="Read how information submitted through the Range & River Cleaning Co. website will be handled once inquiry delivery is configured."
+  path={path}
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  <main class="section legal-page">
+    <article class="shell legal-content">
+      <span class="kicker">Preview notice</span>
+      <h1>Privacy</h1>
+      <p class="legal-status"><strong>Status:</strong> This is preview policy copy. It must be finalized after the legal business name, contact information, form destination, hosting services, analytics, and retention practices are confirmed.</p>
+
+      <h2>Preview form</h2>
+      <p>The quote form is not connected to an owner email, CRM, or database. While the preview notice is present, form contents are not submitted or delivered.</p>
+
+      <h2>Information the live form may request</h2>
+      <p>When inquiry delivery is activated, the quote form may request a name, phone number, email address, property type, requested service, city and ZIP code, approximate size, desired timing, frequency preference, and notes.</p>
+
+      <h2>Expected uses</h2>
+      <p>Submitted information may be used to review the request, respond to the customer, prepare a quote, discuss scheduling, maintain relevant business records, and protect the website from misuse.</p>
+
+      <h2>Service providers</h2>
+      <p>The hosting provider, form processor, CRM, email service, analytics tools, and any other provider that receives information must be listed here before the live form is enabled.</p>
+
+      <h2>Retention and deletion</h2>
+      <p>An approved retention period, deletion process, and privacy contact must be added before launch.</p>
+
+      <h2>Questions</h2>
+      <p>The owner privacy email has not been published yet. It will appear here after Doug approves the public contact details.</p>
+
+      <p class="legal-footnote">Last preview revision: August 31, 2026. Final owner and legal review is required before launch.</p>
+    </article>
+  </main>
+</BaseLayout>

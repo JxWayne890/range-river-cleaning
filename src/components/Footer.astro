@@ -1,0 +1,45 @@
+---
+import BrandMark from "./BrandMark.astro";
+import { business, services } from "../data/business";
+---
+
+<footer class="site-footer">
+  <div class="footer-river" aria-hidden="true"></div>
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <a href="/" aria-label="Range and River Cleaning Company home">
+        <BrandMark />
+      </a>
+      <p>{business.description}</p>
+      <p class="footer-note">Phone, email, hours, and expanded coverage will be published after owner confirmation.</p>
+    </div>
+    <div>
+      <h2>Cleaning paths</h2>
+      <ul>
+        {services.map((service) => <li><a href={service.href}>{service.name}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/service-area/fort-worth/">Fort Worth service area</a></li>
+        <li><a href="/faq/">Frequently asked questions</a></li>
+        <li><a href="/quote/">Request a quote</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+      </ul>
+    </div>
+    <div class="footer-card">
+      <span class="kicker">Fort Worth first</span>
+      <h2>Home or workplace?</h2>
+      <p>Choose the right quote path and share the details that shape the cleaning scope.</p>
+      <a href="/quote/">Start your request <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="shell">
+      <span>© {new Date().getFullYear()} {business.name}</span>
+      <span>Working brand, pending final clearance</span>
+    </div>
+  </div>
+</footer>

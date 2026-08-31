@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import QuoteForm from "../components/QuoteForm.astro";
+
+const path = "/quote/";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Request a Quote", path }
+];
+---
+
+<BaseLayout
+  title="Request a Cleaning Quote in Fort Worth | Range & River"
+  description="Choose a residential or commercial path and tell Range & River about your Fort Worth property, priorities, timing, and frequency."
+  path={path}
+  pageType="ContactPage"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  <main class="section quote-page">
+    <div class="shell quote-shell">
+      <div class="quote-intro">
+        <span class="kicker">Request map</span>
+        <h1>Tell us about the space. Start from there.</h1>
+        <p class="lead">Choose the path that matches the property, then share the details needed to understand the request.</p>
+        <div class="preview-flag">
+          <strong>Preview only</strong>
+          This form does not send or store information. Do not enter real personal information until an approved owner email or CRM destination is connected.
+        </div>
+        <div class="quote-answer">
+          <span class="kicker">Which path?</span>
+          <h2>Home or workplace.</h2>
+          <p>Choose residential when the property is a home. Choose commercial when the property is used for business. If it does not fit neatly, select the closest path and explain the details.</p>
+        </div>
+      </div>
+      <QuoteForm />
+    </div>
+  </main>
+</BaseLayout>

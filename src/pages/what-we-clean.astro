@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import CTASection from "../components/CTASection.astro";
+
+const path = "/what-we-clean/";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "What We Clean", path }
+];
+const residentialAreas = [
+  "Kitchens and dining areas",
+  "Bathrooms",
+  "Bedrooms",
+  "Living and shared rooms",
+  "Home offices",
+  "Interior entries and hallways",
+  "Floors and reachable surfaces"
+];
+const commercialAreas = [
+  "Private and shared offices",
+  "Reception and waiting areas",
+  "Conference and meeting rooms",
+  "Breakrooms and kitchens",
+  "Restrooms",
+  "Interior entries and corridors",
+  "Common areas",
+  "Floors and reachable surfaces"
+];
+const confirmItems = [
+  "Inside appliances",
+  "Inside cabinets and drawers",
+  "Interior windows",
+  "Walls and doors",
+  "Baseboards and detailed trim",
+  "Carpet extraction",
+  "Exterior areas",
+  "High access work",
+  "Construction debris",
+  "Hazardous or specialized cleanup"
+];
+---
+
+<BaseLayout
+  title="What We Clean | Range & River Cleaning Fort Worth"
+  description="Use this room and area guide to prepare a residential or commercial cleaning request in Fort Worth. Final inclusions are confirmed by quote."
+  path={path}
+  pageType="CollectionPage"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  <main>
+    <section class="page-hero section">
+      <div class="shell page-hero-grid">
+        <div>
+          <span class="kicker">Room and area guide</span>
+          <h1>A field guide to building your cleaning scope.</h1>
+          <p class="lead">Use this page to identify the spaces that matter to you. It is a planning checklist, not a promise that every area or task is included.</p>
+          <a class="button" href="/quote/">Build your quote request</a>
+        </div>
+        <aside class="field-card">
+          <span class="field-number">Scope / 01</span>
+          <p class="field-label">Direct answer</p>
+          <h2>How do I know what is included?</h2>
+          <p>Only the scope confirmed for your property determines what is included. Use this guide to name the rooms and details you care about.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section paper-section">
+      <div class="shell room-sections">
+        <article class="room-panel">
+          <header>
+            <span>01 / Residential</span>
+            <h2>Home spaces</h2>
+            <p>Choose the residential path and identify the rooms, surfaces, and priorities that need review.</p>
+          </header>
+          <ul>{residentialAreas.map((item) => <li>{item}</li>)}</ul>
+          <a class="text-link" href="/residential-cleaning/">Residential cleaning guide <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="room-panel dark-panel">
+          <header>
+            <span>02 / Commercial</span>
+            <h2>Workplace spaces</h2>
+            <p>Choose the commercial path and describe the areas, access, service window, and frequency preference.</p>
+          </header>
+          <ul>{commercialAreas.map((item) => <li>{item}</li>)}</ul>
+          <a class="text-link" href="/commercial-cleaning/">Commercial cleaning guide <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section confirm-section">
+      <div class="shell split-content">
+        <div>
+          <span class="kicker">Ask before assuming</span>
+          <h2>Details that need explicit confirmation.</h2>
+          <p class="section-intro">Some requests need different products, tools, time, access, disposal, or safety planning. Ask whether each item is available and included.</p>
+        </div>
+        <ul class="check-grid confirm-grid">
+          {confirmItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+  </main>
+  <CTASection title="Turn the guide into a clear request." copy="Select home or workplace, then name the rooms, priorities, access details, and timing that need review." />
+</BaseLayout>

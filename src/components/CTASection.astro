@@ -1,0 +1,24 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  copy?: string;
+}
+
+const {
+  eyebrow = "Start with the space",
+  title = "Tell us what needs cleaning.",
+  copy = "Choose home or workplace, then share the property details, priorities, and timing that shape the quote."
+} = Astro.props;
+---
+
+<section class="cta-section section">
+  <div class="shell cta-panel">
+    <div>
+      <span class="kicker light">{eyebrow}</span>
+      <h2>{title}</h2>
+      <p>{copy}</p>
+    </div>
+    <a class="button button-light" href="/quote/">Request a cleaning quote <span aria-hidden="true">→</span></a>
+  </div>
+</section>

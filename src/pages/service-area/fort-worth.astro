@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import CTASection from "../../components/CTASection.astro";
+
+const path = "/service-area/fort-worth/";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Fort Worth", path }
+];
+---
+
+<BaseLayout
+  title="Fort Worth Cleaning Service Area | Range & River"
+  description="Range & River is focused on residential and commercial cleaning inquiries in Fort Worth, Texas. Submit your city and ZIP code for availability."
+  path={path}
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  <main>
+    <section class="page-hero section">
+      <div class="shell page-hero-grid">
+        <div>
+          <span class="kicker">Service area 01</span>
+          <h1>Fort Worth is our starting point.</h1>
+          <p class="lead">Range & River Cleaning Co. is focused on residential and commercial cleaning requests in Fort Worth, Texas. Share the property ZIP code so coverage can be confirmed.</p>
+          <a class="button" href="/quote/">Check service availability</a>
+        </div>
+        <aside class="field-card">
+          <span class="field-number">Fort Worth / TX</span>
+          <p class="field-label">Direct answer</p>
+          <h2>Do you serve my Fort Worth ZIP code?</h2>
+          <p>Fort Worth is the primary market. Exact boundaries and ZIP codes are not published yet, so the owner must confirm availability for each property.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section paper-section">
+      <div class="shell area-story">
+        <div class="area-map-card" aria-hidden="true">
+          <span>Primary market</span>
+          <strong>Fort<br />Worth</strong>
+          <small>Texas</small>
+        </div>
+        <div>
+          <span class="kicker">Location matters</span>
+          <h2>Why the ZIP code belongs in the quote.</h2>
+          <p class="section-intro">Property location can affect availability and scheduling. Pair the ZIP code with the property type, approximate size, requested service, and desired timing.</p>
+          <ul class="line-list">
+            <li>Fort Worth is the only confirmed primary market.</li>
+            <li>No private home address is published as a business location.</li>
+            <li>No nearby city is advertised before Doug approves the service list.</li>
+            <li>Coverage is not confirmed until the owner reviews the request.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiet-section">
+      <div class="shell two-column">
+        <div>
+          <span class="kicker">Outside Fort Worth</span>
+          <h2>Looking for a nearby location?</h2>
+          <p class="section-intro">Nearby cities are not advertised at this stage. Share the city and ZIP code in your request so the owner can decide whether it falls inside the approved service area.</p>
+        </div>
+        <aside class="note-card">
+          <span class="kicker">Built for useful pages</span>
+          <h2>No copy and paste city pages.</h2>
+          <p>Future service area pages should be published only after Doug confirms regular coverage and can add real local details, proof, and service limits.</p>
+          <a class="text-link" href="/quote/">Submit the property ZIP code <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <CTASection eyebrow="Fort Worth first" title="Check the property location." copy="Share the city and ZIP code with the property details so coverage can be confirmed before scheduling." />
+</BaseLayout>

@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import CTASection from "../components/CTASection.astro";
+
+const path = "/about/";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "About", path }
+];
+---
+
+<BaseLayout
+  title="About Range & River Cleaning Co. | Fort Worth"
+  description="Meet Doug, the owner behind Range & River Cleaning Co., a Fort Worth company created for residential and commercial cleaning."
+  path={path}
+  pageType="AboutPage"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  <main>
+    <section class="page-hero section about-hero">
+      <div class="shell page-hero-grid">
+        <div>
+          <span class="kicker">Meet the owner</span>
+          <h1>A Fort Worth company for home and work.</h1>
+          <p class="lead">Range & River Cleaning Co. is Doug's Fort Worth cleaning company. Its name draws on the open range and the Trinity River, two threads in the character of the city.</p>
+          <a class="button" href="/quote/">Tell Doug about your space</a>
+        </div>
+        <aside class="owner-card">
+          <span>Owner / 01</span>
+          <div class="owner-initial">D</div>
+          <h2>Doug</h2>
+          <p>Owner of Range &amp; River Cleaning Co.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section paper-section">
+      <div class="shell principles-grid">
+        <div>
+          <span class="kicker">What is known</span>
+          <h2>A company for homes and workplaces.</h2>
+          <p class="section-intro">Doug is creating Range & River to serve residential and commercial clients in Fort Worth. Each request begins with the property, priorities, access, timing, and frequency.</p>
+        </div>
+        <div class="principle-list">
+          <article>
+            <span>01</span>
+            <h3>Separate paths</h3>
+            <p>Home and workplace requests ask different questions from the start.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Property details</h3>
+            <p>Size, priorities, access, timing, and frequency make the request useful.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Clear confirmation</h3>
+            <p>The scope should name what is included before service is scheduled.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiet-section">
+      <div class="shell two-column">
+        <div>
+          <span class="kicker">Owner story</span>
+          <h2>Doug's full story belongs in Doug's words.</h2>
+          <p class="section-intro">Doug's experience, working standards, and reasons for starting the company will be added after his owner interview. This preview leaves those details open instead of filling the page with claims he has not approved.</p>
+        </div>
+        <aside class="note-card">
+          <span class="kicker">Proof comes next</span>
+          <h2>Real work over filler.</h2>
+          <p>Original photos, documented policies, approved insurance language, and verified reviews should replace generic claims as the company begins operating.</p>
+          <a class="text-link" href="/what-we-clean/">See how scopes are planned <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <CTASection title="Start with your space." copy="Choose home or workplace and tell Doug what kind of cleaning request you are planning." />
+</BaseLayout>

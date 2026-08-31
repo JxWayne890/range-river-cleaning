@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import CTASection from "../components/CTASection.astro";
+import { faqs } from "../data/business";
+
+const path = "/faq/";
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "FAQ", path }
+];
+const faqSchema = {
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Fort Worth Cleaning FAQ | Range & River Cleaning"
+  description="Answers about residential, commercial, deep, move, office, and janitorial cleaning requests in Fort Worth."
+  path={path}
+  breadcrumbs={breadcrumbs}
+  schemas={[faqSchema]}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  <main>
+    <section class="page-hero section faq-hero">
+      <div class="shell page-hero-grid">
+        <div>
+          <span class="kicker">Direct answers</span>
+          <h1>Clear answers before you request a quote.</h1>
+          <p class="lead">These answers use only the facts known today. Pricing, hours, supplies, policies, and expanded service areas stay unclaimed until Doug approves them.</p>
+          <a class="button" href="/quote/">Request a cleaning quote</a>
+        </div>
+        <aside class="field-card">
+          <span class="field-number">FAQ / 09</span>
+          <p class="field-label">Most useful answer</p>
+          <h2>What should I provide for a quote?</h2>
+          <p>Share the property type, service, city and ZIP code, approximate size, desired timing, frequency, contact details, and priority notes.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section paper-section">
+      <div class="shell faq-page-grid">
+        <div>
+          <span class="kicker">Known today</span>
+          <h2>Cleaning questions, answered plainly.</h2>
+          <p class="section-intro">If a question depends on an unconfirmed owner policy, this site says so instead of filling the gap with a claim.</p>
+        </div>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiet-section">
+      <div class="shell two-column">
+        <div>
+          <span class="kicker">Questions on hold</span>
+          <h2>What still needs Doug's answer?</h2>
+          <ul class="line-list">
+            <li>Products, supplies, and equipment</li>
+            <li>Insurance and any bonding language</li>
+            <li>Business hours and response targets</li>
+            <li>Cancellation and satisfaction policies</li>
+            <li>Payment methods and final pricing model</li>
+          </ul>
+        </div>
+        <aside class="note-card">
+          <span class="kicker">Have a different question?</span>
+          <h2>Use the notes field.</h2>
+          <p>The quote experience includes space for priorities, access details, and anything that needs explicit confirmation.</p>
+          <a class="text-link" href="/quote/">Open the quote form <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <CTASection title="Ask through the property details." copy="Choose home or workplace, then use the notes to name any question that needs an answer before scheduling." />
+</BaseLayout>

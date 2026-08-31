@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import CTASection from "./CTASection.astro";
+import { business } from "../data/business";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  metaTitle: string;
+  description: string;
+  path: string;
+  intro: string;
+  question: string;
+  answer: string;
+  scopeTitle: string;
+  scopeIntro: string;
+  scopeItems: string[];
+  fitTitle: string;
+  fitItems: string[];
+  noteTitle: string;
+  note: string;
+}
+
+const props = Astro.props;
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: props.title, path: props.path }
+];
+const site = Astro.site ?? new URL("https://rangeriver.vercel.app");
+const serviceSchema = {
+  "@type": "Service",
+  name: props.title,
+  description: props.description,
+  url: new URL(props.path, site).href,
+  provider: { "@id": new URL("/#organization", site).href },
+  areaServed: {
+    "@type": "City",
+    name: business.city,
+    containedInPlace: { "@type": "State", name: "Texas" }
+  }
+};
+---
+
+<BaseLayout
+  title={props.metaTitle}
+  description={props.description}
+  path={props.path}
+  breadcrumbs={breadcrumbs}
+  schemas={[serviceSchema]}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  <main>
+    <section class="page-hero section">
+      <div class="shell page-hero-grid">
+        <div>
+          <span class="kicker">{props.eyebrow}</span>
+          <h1>{props.title}</h1>
+          <p class="lead">{props.intro}</p>
+          <div class="hero-actions">
+            <a class="button" href="/quote/">Request a quote</a>
+            <a class="text-link" href="/what-we-clean/">See the cleaning checklist <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <aside class="field-card">
+          <span class="field-number">R&amp;R / FW</span>
+          <p class="field-label">Direct answer</p>
+          <h2>{props.question}</h2>
+          <p>{props.answer}</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section paper-section">
+      <div class="shell split-content">
+        <div>
+          <span class="kicker">Scope guide</span>
+          <h2>{props.scopeTitle}</h2>
+          <p class="section-intro">{props.scopeIntro}</p>
+        </div>
+        <ul class="check-grid">
+          {props.scopeItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section quiet-section">
+      <div class="shell two-column">
+        <div>
+          <span class="kicker">A useful fit</span>
+          <h2>{props.fitTitle}</h2>
+          <ul class="line-list">
+            {props.fitItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <aside class="note-card">
+          <span class="kicker">Before service</span>
+          <h2>{props.noteTitle}</h2>
+          <p>{props.note}</p>
+          <a class="text-link" href="/faq/">Read common questions <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <CTASection />
+</BaseLayout>

@@ -1,0 +1,209 @@
+<form class="quote-form" data-quote-form>
+  <fieldset>
+    <legend>1. Choose the property path</legend>
+    <div class="path-picker">
+      <label class="path-option">
+        <input type="radio" name="requestPath" value="residential" checked />
+        <strong>My home</strong>
+        <small>House, apartment, move, or deeper residential request</small>
+      </label>
+      <label class="path-option">
+        <input type="radio" name="requestPath" value="commercial" />
+        <strong>My workplace</strong>
+        <small>Office, janitorial, or other commercial request</small>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Describe the space</legend>
+    <div class="conditional-fields" data-fields="residential">
+      <div class="form-grid">
+        <label class="field">
+          <span>Home type</span>
+          <select name="homeType" required>
+            <option value="">Select one</option>
+            <option>House</option>
+            <option>Apartment or condo</option>
+            <option>Townhome</option>
+            <option>Other residential property</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Residential service</span>
+          <select name="residentialService" required>
+            <option value="">Select one</option>
+            <option>General home cleaning</option>
+            <option>Deep cleaning</option>
+            <option>Move in cleaning</option>
+            <option>Move out cleaning</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Approximate size</span>
+          <input name="homeSize" type="text" placeholder="Square feet or bedrooms and bathrooms" required />
+          <small>An estimate is fine.</small>
+        </label>
+        <label class="field">
+          <span>Frequency preference</span>
+          <select name="homeFrequency" required>
+            <option value="">Select one</option>
+            <option>One time</option>
+            <option>Weekly preference</option>
+            <option>Every other week preference</option>
+            <option>Monthly preference</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="conditional-fields" data-fields="commercial" hidden>
+      <div class="form-grid">
+        <label class="field">
+          <span>Workplace type</span>
+          <select name="workplaceType" required disabled>
+            <option value="">Select one</option>
+            <option>Office</option>
+            <option>Professional suite</option>
+            <option>Retail or customer space</option>
+            <option>Property turnover</option>
+            <option>Other commercial property</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Commercial service</span>
+          <select name="commercialService" required disabled>
+            <option value="">Select one</option>
+            <option>Commercial cleaning</option>
+            <option>Office cleaning</option>
+            <option>Janitorial cleaning</option>
+            <option>One time detailed cleaning</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Approximate size</span>
+          <input name="workplaceSize" type="text" placeholder="Approximate square feet" required disabled />
+          <small>An estimate is fine.</small>
+        </label>
+        <label class="field">
+          <span>Frequency preference</span>
+          <select name="commercialFrequency" required disabled>
+            <option value="">Select one</option>
+            <option>One time</option>
+            <option>Recurring preference</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-grid" style="margin-top: 18px;">
+      <label class="field">
+        <span>City</span>
+        <input name="city" type="text" autocomplete="address-level2" value="Fort Worth" required />
+      </label>
+      <label class="field">
+        <span>ZIP code</span>
+        <input name="postalCode" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}" placeholder="76100" required />
+        <small>Used to check coverage.</small>
+      </label>
+      <label class="field">
+        <span>Desired timing</span>
+        <input name="timing" type="text" placeholder="Preferred date or general window" required />
+        <small>This is a request, not a confirmed appointment.</small>
+      </label>
+      <label class="field">
+        <span>Current condition</span>
+        <select name="condition" required>
+          <option value="">Select the closest fit</option>
+          <option>Routine upkeep</option>
+          <option>Needs extra detail</option>
+          <option>Empty or mostly empty</option>
+          <option>Not sure how to describe it</option>
+        </select>
+      </label>
+      <label class="field full">
+        <span>Priorities and access notes</span>
+        <textarea name="notes" minlength="12" maxlength="2000" placeholder="Name the rooms, surfaces, trouble spots, access details, or tasks that need explicit confirmation." required></textarea>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>3. Add contact details</legend>
+    <div class="form-grid">
+      <label class="field">
+        <span>Name</span>
+        <input name="name" type="text" autocomplete="name" minlength="2" required />
+      </label>
+      <label class="field">
+        <span>Phone</span>
+        <input name="phone" type="tel" autocomplete="tel" minlength="7" required />
+      </label>
+      <label class="field full">
+        <span>Email</span>
+        <input name="email" type="email" autocomplete="email" required />
+      </label>
+    </div>
+  </fieldset>
+
+  <label class="consent-field">
+    <input type="checkbox" required />
+    <span>I understand this is a preview. The form does not send or store information, and no appointment or quote is created.</span>
+  </label>
+  <button class="button" type="submit">Review request details</button>
+  <div class="form-status" role="status" aria-live="polite" tabindex="-1" hidden data-form-status>
+    <strong>Your fields are complete.</strong> Nothing was sent or stored. Connect an approved owner email or CRM destination before changing this preview into a live quote form.
+  </div>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-quote-form]");
+
+  if (form) {
+    const pathInputs = form.querySelectorAll<HTMLInputElement>('input[name="requestPath"]');
+    const groups = form.querySelectorAll<HTMLElement>("[data-fields]");
+    const status = form.querySelector<HTMLElement>("[data-form-status]");
+
+    const setPath = (path: string) => {
+      groups.forEach((group) => {
+        const isActive = group.dataset.fields === path;
+        group.hidden = !isActive;
+        group.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>("input, select, textarea").forEach((field) => {
+          field.disabled = !isActive;
+        });
+      });
+      if (status) status.hidden = true;
+    };
+
+    pathInputs.forEach((input) => {
+      input.addEventListener("change", () => setPath(input.value));
+    });
+
+    const requestedPath = new URLSearchParams(window.location.search).get("path");
+    if (requestedPath === "residential" || requestedPath === "commercial") {
+      const requestedInput = form.querySelector<HTMLInputElement>(
+        `input[name="requestPath"][value="${requestedPath}"]`
+      );
+      if (requestedInput) requestedInput.checked = true;
+      setPath(requestedPath);
+    } else {
+      setPath("residential");
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      if (status) {
+        status.hidden = false;
+        status.focus();
+      }
+    });
+  }
+</script>
